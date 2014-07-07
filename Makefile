@@ -82,10 +82,14 @@ all_aux_bin_obj = $(foreach i, $(aux_bin:%=%_obj), $($i))
 
 # Build everything
 
-all: fix $(lib_static) $(lib_shared) $(bin) $(aux_bin) 
+all: $(lib_static) $(lib_shared) $(bin) $(aux_bin) 
 
 fix:
 	export LD_LIBRARY_PATH=.
+
+run:
+	clear
+	./$(bin)
 
 static: $(lib_static) $(bin:%=%-static) $(aux_bin:%=%-static) 
 
